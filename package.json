@@ -1,8 +1,10 @@
 {
   "name": "twitchat.work",
   "version": "0.1.0",
+  "author": "Tyler Johnson <tyler@tylerjohnson.me>",
   "private": true,
   "homepage": "https://twitchat.work",
+  "main": "public/electron.js",
   "dependencies": {
     "@pagedip/util-react-resolver": "^1.1.2",
     "@types/classnames": "^2.2.7",
@@ -12,6 +14,7 @@
     "@types/react": "^16.8.12",
     "@types/react-dom": "^16.8.3",
     "classnames": "^2.2.6",
+    "electron-is-dev": "^1.0.1",
     "gh-pages": "^2.0.1",
     "immer": "^2.1.4",
     "little-loader": "^0.2.0",
@@ -28,7 +31,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "predeploy": "npm run build",
+    "electron-dev": "PORT=6363 concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:\\$PORT && electron .\"",
+    "preelectron-pack": "yarn build",
+    "electron-pack": "build -c.extraMetadata.main=build/electron.js -c.extraMetadata.homepage=./",
+    "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
@@ -39,5 +45,21 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "concurrently": "^4.1.0",
+    "electron": "^4.1.3",
+    "electron-builder": "^20.39.0",
+    "wait-on": "^3.2.0"
+  },
+  "build": {
+    "appId": "com.example.electron-cra",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  }
 }
