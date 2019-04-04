@@ -64,24 +64,24 @@ self.__precacheManifest = [
     "url": "/static/media/HankenGrotesk-Regular.f2db6e1c.woff"
   },
   {
-    "revision": "b69240024b0d7c30f49abd96c0167298",
-    "url": "/static/media/HankenGrotesk-Light.b6924002.woff"
-  },
-  {
     "revision": "253cf79578b654f5709eaec151410f07",
     "url": "/static/media/HankenGrotesk-Bold.253cf795.woff"
+  },
+  {
+    "revision": "b69240024b0d7c30f49abd96c0167298",
+    "url": "/static/media/HankenGrotesk-Light.b6924002.woff"
   },
   {
     "revision": "0069e2c0bbe59ee30f7cf96f5f58e667",
     "url": "/static/media/HankenGrotesk-Black.0069e2c0.ttf"
   },
   {
-    "revision": "3c1cf706ae899d1b77a28a8abb476b76",
-    "url": "/static/media/HankenGrotesk-Medium.3c1cf706.eot"
-  },
-  {
     "revision": "d893e156989b0f1dc37080d05b2c4ddb",
     "url": "/static/media/HankenGrotesk-Medium.d893e156.ttf"
+  },
+  {
+    "revision": "3c1cf706ae899d1b77a28a8abb476b76",
+    "url": "/static/media/HankenGrotesk-Medium.3c1cf706.eot"
   },
   {
     "revision": "cccec63d24a2f7a73cc6ac53656eeeef",
@@ -104,12 +104,20 @@ self.__precacheManifest = [
     "url": "/static/media/HankenGrotesk-ExtraLight.5a9096bb.eot"
   },
   {
+    "revision": "c31297312c1b214b091616b508bf1a03",
+    "url": "/static/media/HankenGrotesk-Regular.c3129731.eot"
+  },
+  {
     "revision": "93fe3e38832b3301025a8246f65e3e41",
     "url": "/static/media/HankenGrotesk-Regular.93fe3e38.ttf"
   },
   {
     "revision": "c26bbde9886d615e11c15096a8453703",
     "url": "/static/media/HankenGrotesk-Bold.c26bbde9.eot"
+  },
+  {
+    "revision": "f83b63660176551e511c2bd6d2a4d94c",
+    "url": "/static/media/HankenGrotesk-Light.f83b6366.eot"
   },
   {
     "revision": "1a92877f50cd1f868cbc3039c7f11f9f",
@@ -120,14 +128,6 @@ self.__precacheManifest = [
     "url": "/static/media/HankenGrotesk-Light.a5563684.ttf"
   },
   {
-    "revision": "c31297312c1b214b091616b508bf1a03",
-    "url": "/static/media/HankenGrotesk-Regular.c3129731.eot"
-  },
-  {
-    "revision": "f83b63660176551e511c2bd6d2a4d94c",
-    "url": "/static/media/HankenGrotesk-Light.f83b6366.eot"
-  },
-  {
     "revision": "1ebd93baa23758b0e847864f69fceca4",
     "url": "/static/media/HankenGrotesk-Medium.1ebd93ba.svg"
   },
@@ -136,12 +136,12 @@ self.__precacheManifest = [
     "url": "/static/media/HankenGrotesk-Regular.cb4bf9f6.svg"
   },
   {
-    "revision": "c89e7a82248f8e6e3e84f813c6e671e2",
-    "url": "/static/media/HankenGrotesk-ExtraLight.c89e7a82.svg"
-  },
-  {
     "revision": "5f907e74949191f50811e993bc9687f0",
     "url": "/static/media/HankenGrotesk-Light.5f907e74.svg"
+  },
+  {
+    "revision": "c89e7a82248f8e6e3e84f813c6e671e2",
+    "url": "/static/media/HankenGrotesk-ExtraLight.c89e7a82.svg"
   },
   {
     "revision": "6fa4fdbe34b5e7a49f5214c1e7508dfe",
