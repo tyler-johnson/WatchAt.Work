@@ -27,6 +27,10 @@ export const ChannelSwitcher: React.FC = function() {
       value={value}
       onChange={onChange}
       placeholder="Enter Channel Name..."
+      autoComplete="off"
+      autoCorrect="off"
+      autoCapitalize="off"
+      spellCheck={false}
     />
   );
 };

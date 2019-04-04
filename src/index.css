@@ -114,13 +114,14 @@ header {
   display: flex;
 }
 
-.channel-switcher {
+header .channel-switcher {
   display: block;
   width: 100%;
   font-size: 1.5rem;
   padding: 0;
   margin: 0;
   border: none;
+  outline: none;
 }
 
 .app {
