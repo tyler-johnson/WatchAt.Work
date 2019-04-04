@@ -28,7 +28,6 @@ export const Player: React.FC = function() {
   const [{ minimized, videoHeight = 300 }, dispatch] = useAppState();
   const [setHeight] = React.useState(() =>
     throttle((height?: number) => {
-      console.log(height);
       dispatch(makeActionSetVideoHeight(height));
     }, 1000 / 30)
   );
