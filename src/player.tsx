@@ -1,29 +1,40 @@
 import "./twitch-embed";
 import * as React from "react";
 import load from "./vendor/little-loader";
-import { createUseResolver } from "@pagedip/util-react-resolver";
 import classnames from "classnames";
-// import { closest } from "@pagedip/util-closest";
 import { useAppState, makeActionToggleMinimized, makeActionSetVideoHeight } from "./state";
 import { throttle } from "lodash";
 
-const loadTwitchEmbed = new Promise<void>((resolve, reject) => {
-  load("https://player.twitch.tv/js/embed/v1.js", (err) => {
-    err ? reject(err) : resolve();
-  });
-});
+const loadTwitchEmbed =
+  process.env.JEST_WORKER_ID !== undefined
+    ? new Promise<void>(() => {})
+    : new Promise<void>((resolve, reject) => {
+        load("https://player.twitch.tv/js/embed/v1.js", (err) => {
+          err ? reject(err) : resolve();
+        });
+      });
 
-export const useLoadTwitchEmbedJS = createUseResolver<void, void>({
-  async resolve() {
-    const result = await loadTwitchEmbed;
-    return result;
-  },
-  shouldUpdate() {
-    return false;
-  },
-});
+interface Load {
+  error?: any;
+  loading: boolean;
+}
 
 export const Player: React.FC = function() {
+  const [{ error, loading }, setState] = React.useState<Load>({ loading: true });
+
+  React.useEffect(() => {
+    const done = (d?: Partial<Load>) => setState({ ...d, loading: false });
+    loadTwitchEmbed.then(() => done(), (error) => done({ error }));
+  }, []);
+
+  if (error) return <div style={{ color: "red" }}>{error.toString()}</div>;
+
+  if (loading) return <div>Loading</div>;
+
+  return <PlayerInner />;
+};
+
+export const PlayerInner: React.FC = function() {
   const [dragging, setDragging] = React.useState(false);
   const [{ minimized, videoHeight = 300 }, dispatch] = useAppState();
   const [setHeight] = React.useState(() =>
