@@ -2,18 +2,29 @@ import * as React from "react";
 import produce from "immer";
 
 export interface State {
+  source: "twitch" | "mixer";
   channel?: string;
   minimized?: boolean;
   videoHeight?: number;
 }
 
-export const defaultState: State = {
+export const defaultState = (): State => ({
+  source: "twitch",
   videoHeight: 300,
   minimized: false,
-};
+});
 
-export type Action = ActionSetChannel | ActionToggleMinimized | ActionSetVideoHeight;
+export type Action = ActionSetChannel | ActionToggleMinimized | ActionSetVideoHeight | ActionSetSource;
 export type Dispatch = (action: Action) => void;
+
+export interface ActionSetSource {
+  type: "set-source";
+  source: "twitch" | "mixer";
+}
+
+export function makeActionSetSource(source: "twitch" | "mixer"): ActionSetSource {
+  return { type: "set-source", source };
+}
 
 export interface ActionSetChannel {
   type: "set-channel";
@@ -44,6 +55,9 @@ export function makeActionSetVideoHeight(height?: number): ActionSetVideoHeight 
 function reducer(state: State, action: Action) {
   const nextState = produce(state, (draft) => {
     switch (action.type) {
+      case "set-source":
+        draft.source = action.source;
+        break;
       case "set-channel":
         draft.channel = action.channel || undefined;
         break;
@@ -63,7 +77,7 @@ function reducer(state: State, action: Action) {
 
 export type Value = [State, Dispatch];
 
-export const Context = React.createContext<Value>([{}, () => {}]);
+export const Context = React.createContext<Value>([defaultState(), () => {}]);
 Context.displayName = "StateContext";
 
 function loadFromStorage(initialState: State): State {
@@ -80,7 +94,7 @@ function saveToStorage(state: State) {
   localStorage.setItem("twitchat.work_data", JSON.stringify(state));
 }
 
-export const Provider: React.FC<{ initialState?: State }> = function({ initialState = defaultState, children }) {
+export const Provider: React.FC<{ initialState?: State }> = function({ initialState = defaultState(), children }) {
   const value = React.useReducer(reducer, initialState, (i) => loadFromStorage(i || {}));
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };

@@ -6,7 +6,6 @@
   "homepage": "https://twitchat.work",
   "main": "public/electron.js",
   "dependencies": {
-    "@pagedip/util-react-resolver": "^1.1.2",
     "@types/classnames": "^2.2.7",
     "@types/jest": "^24.0.11",
     "@types/lodash": "^4.14.123",
@@ -33,7 +32,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "electron-dev": "PORT=6363 concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:\\$PORT && electron .\"",
     "preelectron-pack": "yarn build",
-    "electron-pack": "build -c.extraMetadata.main=build/electron.js -c.extraMetadata.homepage=./",
+    "electron-pack": "build -mwl -c.extraMetadata.main=build/electron.js -c.extraMetadata.homepage=./",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build"
   },
