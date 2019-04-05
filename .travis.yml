@@ -14,9 +14,11 @@ before_install:
 install:
   - yarn
 script:
+  - yarn build
   - yarn test
 deploy:
   provider: pages
+  local_dir: build
   skip_cleanup: true
   github_token: $GH_TOKEN
   keep_history: true
