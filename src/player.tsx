@@ -5,11 +5,14 @@ import classnames from "classnames";
 import { useAppState, makeActionToggleMinimized, makeActionSetVideoHeight } from "./state";
 import { throttle } from "lodash";
 
-const loadTwitchEmbed = new Promise<void>((resolve, reject) => {
-  load("https://player.twitch.tv/js/embed/v1.js", (err) => {
-    err ? reject(err) : resolve();
-  });
-});
+const loadTwitchEmbed =
+  process.env.JEST_WORKER_ID !== undefined
+    ? new Promise<void>(() => {})
+    : new Promise<void>((resolve, reject) => {
+        load("https://player.twitch.tv/js/embed/v1.js", (err) => {
+          err ? reject(err) : resolve();
+        });
+      });
 
 interface Load {
   error?: any;
