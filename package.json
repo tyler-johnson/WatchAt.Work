@@ -1,9 +1,9 @@
 {
-  "name": "twitchat.work",
+  "name": "watchat.work",
   "version": "0.1.0",
   "author": "Tyler Johnson <tyler@tylerjohnson.me>",
   "private": true,
-  "homepage": "https://twitchat.work",
+  "homepage": "https://watchat.work",
   "main": "public/electron.js",
   "dependencies": {
     "@types/classnames": "^2.2.7",
